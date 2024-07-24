@@ -1,5 +1,5 @@
 {
-    "display_name": "Template Extension",
+    "display_name": "Metadata Viewer",
     "loading_order": 1,
     "requires": [],
     "optional": [],
@@ -7,6 +7,6 @@
     "css": "",
     "author": "Cohee1207",
     "version": "1.0.0",
-    "homePage": "https://github.com/Cohee1207/Extension-ReactTemplate",
+    "homePage": "https://github.com/Cohee1207/Extension-ImageMetadataViewer",
     "auto_update": true
 }

@@ -1,15 +1,26 @@
-# Extension-ReactTemplate
-Template repository for SillyTavern extensions using React and Webpack.
+# Image Metadata Viewer
 
-## How to use
+View metadata of enlarged images attached to a chat. Doesn't work with images inserted via Markdown.
 
-1. Click "Use this template" on the GitHub page.
-2. Create a new repository and clone it to your local machine.
-3. Open the repository in your code editor and run `npm install`.
-4. Edit the `manifest.json` file.
-5. Write the source code in `src` directory.
-6. When you're ready to test - run `npm run build`.
-7. Minimized bundle will appear in `dist`, ready to be plugged into SillyTavern.
+Supported: PNG with tEXt chunks.
 
-> [!TIP]
-> If you want to test your extension live, clone the repo into the `/public/scripts/extensions/third-party` of your SillyTavern installation.
+## Installation
+
+Requirements: SillyTavern 1.12.3 or later.
+
+Install using the link:
+
+```txt
+https://github.com/Cohee1207/Extension-ImageMetadataViewer
+```
+
+## How to build
+
+```sh
+npm install
+npm run build
+```
+
+## License
+
+AGPL-3.0
