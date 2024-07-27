@@ -29,6 +29,15 @@ async function displayImageMetadata(dialog, url) {
 
         const holder = dialog.querySelector('.img_enlarged_holder');
 
+        const originalPrompt = holder.parentNode.querySelector('pre > code');
+
+        if (originalPrompt instanceof HTMLElement && originalPrompt.textContent) {
+            textChunks.unshift(({
+                keyword: 'Original prompt',
+                text: originalPrompt.textContent,
+            }));
+        }
+
         const table = document.createElement('table');
         table.classList.add('img_metadata');
 

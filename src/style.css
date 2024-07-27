@@ -9,8 +9,12 @@ table.img_metadata {
     border-spacing: 0;
     margin-top: 0.5em;
     text-align: left;
-    max-height: 25dvh;
+    max-height: 20dvh;
     overflow-y: auto;
+}
+
+table.img_metadata ~ pre {
+    display: none;
 }
 
 table.img_metadata th,
