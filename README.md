@@ -11,7 +11,7 @@ Requirements: SillyTavern 1.12.3 or later.
 Install using the link:
 
 ```txt
-https://github.com/Cohee1207/Extension-ImageMetadataViewer
+https://github.com/SillyTavern/Extension-ImageMetadataViewer
 ```
 
 ## How to build
