@@ -17,6 +17,7 @@
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
+        "exifreader": "^4.23.3",
         "png-chunk-text": "^1.0.0",
         "png-chunks-extract": "^1.0.0"
     }

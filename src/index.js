@@ -1,7 +1,11 @@
-import { decode } from 'png-chunk-text';
-import extractChunks from 'png-chunks-extract';
+import ExifReader from 'exifreader';
 import './style.css';
 
+/**
+ * Prettifies a JSON object.
+ * @param {object} json JSON object to prettify
+ * @returns {string} Prettified JSON
+ */
 function prettifyJson(json) {
     try {
         return JSON.stringify(JSON.parse(json), null, 2);
@@ -11,6 +15,12 @@ function prettifyJson(json) {
 }
 
 /**
+ * @typedef {Object} ImageMetadata
+ * @property {string} keyword
+ * @property {string} text
+ */
+
+/**
  * Extracts text chunks from a PNG image and displays them.
  * @param {HTMLDialogElement} dialog Dialog element containing the image
  * @param {string} url URL of the image to extract text from
@@ -18,12 +28,20 @@ function prettifyJson(json) {
  */
 async function displayImageMetadata(dialog, url) {
     try {
+        /** @type {ImageMetadata[]} */
+        const result = [];
         const response = await fetch(url);
         const buffer = await response.arrayBuffer();
-        const chunks = extractChunks(new Uint8Array(buffer));
-        const textChunks = chunks.filter(chunk => chunk.name === 'tEXt').map(chunk => decode(chunk.data));
+        const tags = await ExifReader.load(buffer, { async: true });
 
-        if (textChunks.length === 0) {
+        for (const tag in tags) {
+            result.push({
+                keyword: tag,
+                text: tags[tag].description,
+            });
+        }
+
+        if (result.length === 0) {
             return;
         }
 
@@ -32,7 +50,7 @@ async function displayImageMetadata(dialog, url) {
         const originalPrompt = holder.parentNode.querySelector('pre > code');
 
         if (originalPrompt instanceof HTMLElement && originalPrompt.textContent) {
-            textChunks.unshift(({
+            result.unshift(({
                 keyword: 'Original prompt',
                 text: originalPrompt.textContent,
             }));
@@ -52,7 +70,7 @@ async function displayImageMetadata(dialog, url) {
 
         table.appendChild(header);
 
-        textChunks.forEach((chunk) => {
+        result.forEach((chunk) => {
             const row = document.createElement('tr');
             const name = document.createElement('td');
             name.textContent = chunk.keyword;

@@ -2,7 +2,7 @@
 
 View metadata of enlarged images attached to a chat. Doesn't work with images inserted via Markdown.
 
-Supported: PNG with tEXt chunks.
+Supported: Most image formats with EXIF metadata or PNG tEXt chunks.
 
 ## Installation
 
