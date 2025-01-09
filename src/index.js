@@ -109,6 +109,10 @@ async function displayImageMetadata(dialog, url) {
             hideButton.remove();
         });
 
+        table.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
         headerValue.appendChild(hideButton);
     } catch (error) {
         console.error('Failed to extract text chunks from image', error);
