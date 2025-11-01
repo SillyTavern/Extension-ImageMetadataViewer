@@ -56,13 +56,16 @@ async function displayImageMetadata(dialog, url) {
             }));
         }
 
-        const table = document.createElement('table');
+        const table = document.createElement('div');
         table.classList.add('img_metadata');
 
-        const header = document.createElement('tr');
-        const headerName = document.createElement('th');
+        const header = document.createElement('div');
+        header.classList = 'img_metadata_row';
+        const headerName = document.createElement('div');
+        headerName.className = 'img_metadata_cell';
         headerName.textContent = 'Name';
-        const headerValue = document.createElement('th');
+        const headerValue = document.createElement('div');
+        headerValue.className = 'img_metadata_cell';
         headerValue.textContent = 'Value';
 
         header.appendChild(headerName);
@@ -71,10 +74,13 @@ async function displayImageMetadata(dialog, url) {
         table.appendChild(header);
 
         result.forEach((chunk) => {
-            const row = document.createElement('tr');
-            const name = document.createElement('td');
+            const row = document.createElement('div');
+            row.className = 'img_metadata_row';
+            const name = document.createElement('div');
+            name.className = 'img_metadata_cell';
             name.textContent = chunk.keyword;
-            const value = document.createElement('td');
+            const value = document.createElement('div');
+            value.className = 'img_metadata_cell';
             value.textContent = prettifyJson(chunk.text);
 
             row.appendChild(name);
